@@ -1,9 +1,9 @@
 class PingonePromote < Formula
   desc "Review selected PingOne configuration and submit GitLab promotion requests"
   homepage "https://github.com/ChayzX/pingone-promote"
-  url "https://github.com/ChayzX/pingone-promote/releases/download/v0.2.0-rc.2/pingone-promote-v0.2.0-rc.2-source.tar.gz"
-  version "0.2.0-rc.2"
-  sha256 "fd561c80e0f36401f27af506042e6480fb444d578afb77053053083b1d3060fd"
+  url "https://github.com/ChayzX/pingone-promote/releases/download/v0.2.0-rc.3/pingone-promote-v0.2.0-rc.3-source.tar.gz"
+  version "0.2.0-rc.3"
+  sha256 "ecddd8c0efa577f7230f775dfa69d359674c16dfac6a2ef8f952005d71275243"
 
   depends_on "go" => :build
 
@@ -12,7 +12,6 @@ class PingonePromote < Formula
     ENV["GOTOOLCHAIN"] = "local"
     ldflags = "-X pingone-promote/internal/buildinfo.Version=v#{version}"
     system "go", "build", *std_go_args(output: bin/"pingone-promote", ldflags:), "./cmd/pingone-promote"
-    system "go", "build", *std_go_args(output: bin/"pingone-runner", ldflags:), "./cmd/pingone-runner"
     doc.install "README.md"
     pkgshare.install "docs", "examples"
   end
@@ -28,8 +27,5 @@ class PingonePromote < Formula
 
   test do
     assert_equal "pingone-promote v#{version}\n", shell_output("#{bin}/pingone-promote --version")
-    assert_equal "pingone-runner v#{version}\n", shell_output("#{bin}/pingone-runner --version")
-    (testpath/"request.json").write("{}")
-    assert_match "version", shell_output("#{bin}/pingone-runner validate --request #{testpath}/request.json 2>&1", 1)
   end
 end
