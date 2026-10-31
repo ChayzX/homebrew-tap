@@ -1,9 +1,9 @@
 class PingonePromote < Formula
   desc "Review selected PingOne configuration and submit GitLab promotion requests"
   homepage "https://github.com/ChayzX/pingone-promote"
-  url "https://github.com/ChayzX/pingone-promote/releases/download/v0.2.0-rc.3/pingone-promote-v0.2.0-rc.3-source.tar.gz"
-  version "0.2.0-rc.3"
-  sha256 "ecddd8c0efa577f7230f775dfa69d359674c16dfac6a2ef8f952005d71275243"
+  url "https://github.com/ChayzX/pingone-promote/releases/download/v0.2.0-rc.4/pingone-promote-v0.2.0-rc.4-source.tar.gz"
+  version "0.2.0-rc.4"
+  sha256 "5853aaf2786c743fa93e10edea4e3d97c0666482515d78b8309b79017fd0884f"
 
   depends_on "go" => :build
 
